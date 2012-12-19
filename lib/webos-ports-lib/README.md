@@ -33,8 +33,8 @@ A variant of the PortsHeader that contains an animated, expandable search bar. o
 
 ##BackGesture
 
-A kind that listens for the webOS Back Gesture and fires onBack. Both 2.x and Open webOS are supported, as well as the Esc key on desktop browsers.
+A function that listens for the webOS Back Gesture and fires the onbackbutton signal. Both 2.x and Open webOS are supported, as well as phonegap and the Esc key on desktop browsers.
 
 **Example:**
 
-     {kind: "BackGesture", onBack: "doBackFoo"}
+     {kind: "enyo.Signals", onbackbutton: "handleBackGesture"}

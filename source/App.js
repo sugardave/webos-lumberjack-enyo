@@ -77,7 +77,7 @@ enyo.kind({
 	arrangerKind: "CollapsingArranger",
 	palm: false,
 	components:[
-		{kind: "BackGesture", onBack: "handleBackGesture"},
+		{kind: "enyo.Signals", onbackbutton: "handleBackGesture"},
 		{name: "MenuPanel",
 		style: "width: 33%",
 		layoutKind: "FittableRowsLayout",

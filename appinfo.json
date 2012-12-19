@@ -1,0 +1,12 @@
+{
+	"title": "webos-ports-template",
+	"id": "org.webosports.app.template",
+	"version": "1.0.0",
+	"vendor": "WebOS Ports",
+	"vendor_url": "",
+	"type": "web",
+	"main": "index.html",
+	"icon": "icon.png",
+	"uiRevision": "2"
+}
+

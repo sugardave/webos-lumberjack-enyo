@@ -26,11 +26,13 @@
 			var onDeviceReady=function() {
 				new App().renderInto(document.body);
 			}
-			if (typeof(navigator.device) === "undefined"){
-				onDeviceReady();  
-			} else {
-				document.addEventListener("deviceready", onDeviceReady, false);
-			}
+			setTimeout(function() {
+				if (typeof navigator.device == "undefined"){
+					onDeviceReady();  
+				} else {
+					document.addEventListener("deviceready", onDeviceReady, false);
+				}
+			}, 0);
 		</script>
 	</body>
 </html>

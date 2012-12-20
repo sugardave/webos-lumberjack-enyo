@@ -23,10 +23,14 @@
 				alert('No application build found, redirecting to debug.html.');
 				location = 'debug.html';
 			}
-			var onDeviceReady = function() {
+			var onDeviceReady=function() {
 				new App().renderInto(document.body);
-			};
-			document.addEventListener('deviceready', onDeviceReady, false);
+			}
+			if (typeof(navigator.device) === "undefined"){
+				onDeviceReady();  
+			} else {
+				document.addEventListener("deviceready", onDeviceReady, false);
+			}
 		</script>
 	</body>
 </html>

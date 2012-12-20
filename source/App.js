@@ -3,7 +3,6 @@ enyo.kind({
 	kind: "Panels",
 	realtimeFit: true,
 	arrangerKind: "CollapsingArranger",
-	palm: false,
 	components:[
 		{kind: "enyo.Signals", onbackbutton: "handleBackGesture"},
 		{name: "MenuPanel",

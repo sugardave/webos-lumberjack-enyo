@@ -2,6 +2,7 @@ enyo.kind({
 	name: "EmptyPanel",
 	layoutKind: "FittableRowsLayout",
 	style: "background-color: #555;",
+	palm: false,
 	components:[
 		{kind: "onyx.Toolbar", content: "Panel", style: "line-height: 34px;"},
 		{fit: true, style: "padding: 8px;", components:[

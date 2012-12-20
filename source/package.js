@@ -5,7 +5,10 @@ enyo.depends(
 	"$lib/webos-ports-lib",
 	"$lib/webos-ext",
 	"$lib/more-arrangers",
+
 	//Main App
 	"App.css",
+	"ListItem.js",
+	"EmptyPanel.js",
 	"App.js"
 );

@@ -12,10 +12,12 @@ enyo.kind({
 			{kind: "PortsHeader",
 			title: "webos-ports-template",
 			taglines: [
-				"Git you rollin'",
-				"The best place to start is at the beginning.",
-				"TURN ME INTO AN AWESOME APP!",
-				"Templately, simply templately.",
+				"Always Watching The Log",
+				"Sleep All Night, Work All Day",
+				"Hack Through Your Logs",
+				"I\'m OK",
+				"<a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R3Q2EUA52WJ7A'>Donated</a> To WebOS Internals Lately?",
+				"Is A Logger... Get it?"
 			]},
 			{kind: "Scroller",
 			horizontal: "hidden",

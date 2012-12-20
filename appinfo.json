@@ -1,6 +1,6 @@
 {
-	"title": "webos-ports-template",
-	"id": "org.webosports.app.template",
+	"title": "webos-ports-lumberjack",
+	"id": "org.webosports.app.lumberjack",
 	"version": "1.0.0",
 	"vendor": "WebOS Ports",
 	"vendor_url": "",

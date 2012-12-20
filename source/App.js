@@ -10,7 +10,7 @@ enyo.kind({
 		layoutKind: "FittableRowsLayout",
 		components:[
 			{kind: "PortsHeader",
-			title: "webos-ports-template",
+			title: "Lumberjack",
 			taglines: [
 				"Always Watching The Log",
 				"Sleep All Night, Work All Day",

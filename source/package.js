@@ -10,5 +10,6 @@ enyo.depends(
 	"App.css",
 	"ListItem.js",
 	"EmptyPanel.js",
+	"FilterPopup.js",
 	"App.js"
 );

@@ -26,10 +26,11 @@ enyo.kind({
 			touch: true,
 			components:[
 				//Connectivity
-				{kind: "onyx.Toolbar", classes: "list-header", content: "List Header Template"},
-				{kind: "ListItem", icon: "icon.png", title: "List Item Template", ontap: "openPanel"}
+				//{kind: "onyx.Toolbar", classes: "list-header", content: "List Header Template"},
+				{name: "filterItem", kind: "FilterPopup", classes: "main-item"}
+				//{kind: "ListItem", icon: "icon.png", title: "List Item Template", ontap: "openPanel"}
 			]},
-			{kind: "onyx.Toolbar"},
+			{kind: onyx.Toolbar},
 		]},
 		{name: "ContentPanels",
 		kind: "Panels",
@@ -40,18 +41,19 @@ enyo.kind({
 			{kind: "EmptyPanel"},
 		]},
 	],
-	create: function() {
+	createX: function() {
 		this.inherited(arguments);
+		if (!navigator.service) return;
 		var request = navigator.service.Request("palm://com.palm.connectionmanager",
 		{
 			method: 'getstatus',
 			parameters: {},
-			onSuccess: this.showVersion,
+			onSuccess: enyo.bind(this, "showVersion"),
 		});
 	},
 	showVersion: function(inResult) {
-		enyo.log("GOT STATUS");
-		enyo.log("result="+JSON.stringify(inResult));
+		this.log("GOT STATUS");
+		this.log("result="+JSON.stringify(inResult));
 	},
 	//Handlers
 	reflow: function(inSender) {

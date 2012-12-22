@@ -9,7 +9,7 @@ enyo.kind({
 			{content: "I'm a panel.", style: "color: white; padding-bottom: 8px;"},
 			{kind: "onyx.Button", content: "Open Browser", ontap: "openBrowserTapped"}
 		]},
-		{kind: "onyx.Toolbar"},
+		//{kind: "onyx.Toolbar"},
 	],
 	//Handlers
 	create: function(inSender) {

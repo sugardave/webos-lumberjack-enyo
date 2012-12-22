@@ -1,6 +1,7 @@
 enyo.kind({
 	name: "GetLog",
 	kind: enyo.FittableRows,
+	classes: "enyo-fill",
 	published: {
 		filter: "",
 		custom: ""
@@ -12,18 +13,20 @@ enyo.kind({
 		{name: "stats", kind: "Stats"},
 		//{name: "getMessages", kind: "PalmService", subscribe: true, service: "palm://org.webosinternals.lumberjack/", method: "getMessages", onResponse: "getMessagesResponse"},
 		{name: "tag", classes: "tag"},
-		//{name: "h1", kind: "Header", classes: "header", components: [
-		{name: "h1", kind: onyx.Toolbar, classes: "header", components: [
-			//{kind: "GrabButton"},
+		{name: "h1", kind: onyx.Toolbar, layoutKind: enyo.FittableColumnsLayout, classes: "header", components: [
 			{kind: onyx.Grabber},
 			{name: "title", classes: "title", content: "Retrieve Log"},
-			{kind: "Button", caption: "X", classes: "enyo-button-negative", onclick: "close"},
+			{fit: true},
+			{kind: onyx.Button, content: "X", classes: "onyx-negative", ontap: "close"},
 		]},
-		//{name: "spinner", kind: "SpinnerLarge", classes: "large-spinner"},
-		//{name: "data", kind: "wi.FlyweightAwesomeList", data: [], height: "100%", bottomUp: true, onSetupRow: "setupRow", components: [
-		{name: "data", kind: "wi.FlyweightAwesomeList", data: [], fit: true, bottomUp: true, onSetupRow: "setupRow", components: [
-			{name: "logItem", kind: "LogItem", classes: "logItem"}
-		]}
+		{layoutKind: enyo.FittableRowsLayout, fit: true, components: [
+			{name: "spinner", kind: onyx.Spinner},
+			//{name: "data", kind: "wi.FlyweightAwesomeList", data: [], height: "100%", bottomUp: true, onSetupRow: "setupRow", components: [
+			{name: "data", kind: "wi.FlyweightAwesomeList", count: 0, data: [], fit: true, onSetupRow: "setupRow", components: [
+				{name: "logItem", kind: "LogItem", classes: "logItem"}
+			]},
+		]},
+		//{kind: onyx.Toolbar}
 	]
 });
 
@@ -84,5 +87,5 @@ enyo.kind({
 	punt: function() {
 		this.inherited(arguments);
 		this.reset();
-	},
+	}
 });

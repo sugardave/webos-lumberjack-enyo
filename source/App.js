@@ -11,7 +11,7 @@ enyo.kind({
 				"Always Watching The Log",
 				"Sleep All Night, Work All Day",
 				"Hack Through Your Logs",
-				"I\"m OK",
+				"I'm OK",
 				"<a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R3Q2EUA52WJ7A'>Donated</a> To WebOS Internals Lately?",
 				"Is A Logger... Get it?"
 			]},
@@ -21,7 +21,7 @@ enyo.kind({
 				{name: "filterItem", kind: "FilterItem", ontap: "expand"},
 				{name: "getItem",  kind: "ListItem", title: "Retrieve Log", icon: "get", ontap: "popGet"},
 			]},
-			{kind: onyx.Toolbar}
+			//{kind: onyx.Toolbar}
 		]},
 		{name: "contentPanels", kind: enyo.Panels, arrangerKind: enyo.CardArranger, draggable: false, index: 1, components:[
 			{name: "blank", kind: "EmptyPanel"},
@@ -77,11 +77,10 @@ enyo.kind({
 			]},
 			{owner: this}
 		);
-		//this.$.slidingPane.render();
+		this.$.contentPanels.render();
 	},
 	destroySecondary: function() {
 		if (this.$.secondary) this.$.secondary.destroy();
-		//this.$.slidingPane.createComponent(this.getBlankPanel(), {owner: this});
 		this.$.contentPanels.createComponent({name: "blank", kind: "EmptyPanel"}, {owner: this});
 		this.setIndex(0);
 		this.$.contentPanels.render();

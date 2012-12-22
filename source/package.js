@@ -8,8 +8,11 @@ enyo.depends(
 
 	//Main App
 	"App.css",
+	"Lumberjack.css",
+	"Stats.js",
 	"ListItem.js",
 	"EmptyPanel.js",
 	"FilterItem.js",
+	"GetLog.js",
 	"App.js"
 );

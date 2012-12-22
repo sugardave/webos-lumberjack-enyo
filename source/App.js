@@ -11,19 +11,20 @@ enyo.kind({
 				"Always Watching The Log",
 				"Sleep All Night, Work All Day",
 				"Hack Through Your Logs",
-				"I\'m OK",
+				"I\"m OK",
 				"<a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R3Q2EUA52WJ7A'>Donated</a> To WebOS Internals Lately?",
 				"Is A Logger... Get it?"
 			]},
-			{name: "scroller", kind: enyo.Scroller, horizontal: "hidden", classesX: "enyo-fill", fit: true, touch: true, components:[
+			{name: "scroller", kind: enyo.Scroller, horizontal: "hidden", fit: true, touch: true, classes: "main-list", components:[
 				//Connectivity
 				//{kind: "onyx.Toolbar", classes: "list-header", content: "List Header Template"},
-				{name: "filterItem", kind: "FilterItem", classes: "main-item", ontap: "expand"}
+				{name: "filterItem", kind: "FilterItem", ontap: "expand"},
+				{name: "getItem",  kind: "ListItem", title: "Retrieve Log", icon: "get", ontap: "popGet"},
 			]},
 			{kind: onyx.Toolbar}
 		]},
-		{name: "ContentPanels", kind: "Panels", arrangerKind: "CardArranger", draggable: false,	index: 1, components:[
-			{kind: "EmptyPanel"},
+		{name: "contentPanels", kind: enyo.Panels, arrangerKind: enyo.CardArranger, draggable: false, index: 1, components:[
+			{name: "blank", kind: "EmptyPanel"},
 		]},
 	],
 	indexChanged: function() {
@@ -46,12 +47,12 @@ enyo.kind({
 		if(enyo.Panels.isScreenNarrow()) {
 			this.setArrangerKind("PushPopArranger");
 			this.setDraggable(false);
-			this.$.ContentPanels.addStyles("box-shadow: 0");
+			this.$.contentPanels.addStyles("box-shadow: 0");
 		}
 		else {
 			this.setArrangerKind("CollapsingArranger");
 			this.setDraggable(true);
-			this.$.ContentPanels.addStyles("box-shadow: -4px 0px 4px rgba(0,0,0,0.3)");
+			this.$.contentPanels.addStyles("box-shadow: -4px 0px 4px rgba(0,0,0,0.3)");
 		}
 	},
 	handleBackGesture: function(inSender, inEvent) {
@@ -60,5 +61,29 @@ enyo.kind({
 	//Action Functions
 	openPanel: function(inSender, inEvent) {
 			this.setIndex(1);
+	},
+	//Lumberjack Functions
+	popGet: function() {
+		if (this.$.blank) this.$.blank.destroy();
+		if (this.$.secondary) this.$.secondary.destroy();
+		/*this.$.slidingPane.createComponent({name: 'secondary', kind: 'enyo.SlidingView', flex: 1, peekWidth: 66, components: [
+			{name: 'getLog', kind: 'Lumberjack.GetLog', className: 'log', panelNum: this.panelNum, onClose: 'destroySecondary',
+				filter: this.$.filterItem.filter, custom: this.$.filterItem.custom}
+		]}, {owner: this});*/
+		this.$.contentPanels.createComponent(
+			{name: "secondary", peekWidthX: 66, components: [
+				{name: "getLog", kind: "GetLog", classes: "log", onClose: "destroySecondary",
+					filter: this.$.filterItem.filter, custom: this.$.filterItem.custom}
+			]},
+			{owner: this}
+		);
+		//this.$.slidingPane.render();
+	},
+	destroySecondary: function() {
+		if (this.$.secondary) this.$.secondary.destroy();
+		//this.$.slidingPane.createComponent(this.getBlankPanel(), {owner: this});
+		this.$.contentPanels.createComponent({name: "blank", kind: "EmptyPanel"}, {owner: this});
+		this.setIndex(0);
+		this.$.contentPanels.render();
 	}
 });

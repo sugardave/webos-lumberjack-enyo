@@ -5,7 +5,7 @@ enyo.kind({
 		custom: ""
 	},
 	components: [
-		{name: "filter", kind: "ListItem", title: "All Applications", ontap: "toggleDrawer", components: [
+		{name: "filter", kind: "ListItem", title: "All Applications", icon: "filter", ontap: "toggleDrawer", components: [
 			{content: "v", style: "padding-right: 10px;"}
 		]},
 		{name: "drawer", kind: onyx.Drawer, open: false, components: [
@@ -14,35 +14,33 @@ enyo.kind({
 					{name: "customInput", kind: onyx.Input, placeholder: "Custom", onkeypress: "keyCustom"}
 				]},
 			]},
-			{kind: "ListItem", title: "Everything", style: "padding-left: 0px;", ontap: "clickEverything"},
+			{kind: "ListItem", title: "Everything", noIcon: true, style: "padding-left: 0px;", ontap: "clickEverything"},
 			{content: "Applications Divider (missing kind)"},
-			{kind: "ListItem", title: "All Applications", ontap: "clickAllApps"},
+			{kind: "ListItem", title: "All Applications", noIcon: true, ontap: "clickAllApps"},
 			{name: "apps"}
 		]}
 	],
 	create: function() {
 		this.inherited(arguments);
+		this.filterChanged();
 		this.listApps();
 	},
 	customChanged: function() {},
 	filterChanged: function() {
 		if (this.filter == "every") {
 			this.$.filter.setTitle("Everything");
-			//TODO: use icon property for filter ListItem
-			//this.$.icon.addRemoveClass("icon filter", true);
+			this.$.filter.setIcon("filter");
 		} else if (this.filter == "allapps") {
 			this.$.filter.setTitle("All Applications");
-			//TODO: use icon property for filter ListItem
-			//this.$.icon.addRemoveClass("icon app", true);
-		} else if (this.filter == 'custom') {
+			this.$.filter.setIcon("app");
+		} else if (this.filter == "custom") {
 			this.$.text.setContent(this.custom);
-			this.$.icon.setClassName('icon filter');
+			this.$.filter.setIcon("filter");
 		} else if (this.apps) {
 			for (var a = 0; a < this.apps.length; a++) {
 				if (this.apps[a].id === this.filter) {
 					this.$.filter.setTitle(this.apps[a].title);
-					//TODO: use icon property for filter ListItem
-					//this.$.icon.setClassName('icon app');
+					this.$.filter.setIcon("app");
 				}
 			}
 		}

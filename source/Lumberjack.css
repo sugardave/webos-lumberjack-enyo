@@ -1,0 +1,31 @@
+#app .main-list .icon {
+	width: 64px;
+	height: 44px;
+	line-height: 46px;
+	vertical-align: middle;
+	margin: -10px 2px -10px 0;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: bold;
+	color: #666;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#app .main-list .icon.filter {
+	background-image: url(../images/icon-filter.png);
+}
+#app .main-list .icon.app {
+	background-image: url(../images/icon-app.png);
+}
+#app .main-list .icon.get {
+	background-image: url(../images/icon-get.png);
+}
+#app .main-list .icon.tail {
+	background-image: url(../images/icon-tail.png);
+}
+#app .main-list .icon.worm {
+	background-image: url(../images/icon-worm.png);
+}
+#app .main-list .icon.bus {
+	background-image: url(../images/icon-bus.png);
+}

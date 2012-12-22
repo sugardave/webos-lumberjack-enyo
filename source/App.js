@@ -1,12 +1,12 @@
 enyo.kind({
 	name: "App",
-	kind: "Panels",
+	kind: enyo.Panels,
 	realtimeFit: true,
-	arrangerKind: "CollapsingArranger",
+	arrangerKind: enyo.CollapsingArranger,
 	peekWidth: 50,
 	components:[
-		{kind: "enyo.Signals", onbackbutton: "handleBackGesture"},
-		{name: "MenuPanel", style: "width: 33%", layoutKind: "FittableRowsLayout", components:[
+		{kind: enyo.Signals, onbackbutton: "handleBackGesture"},
+		{name: "MenuPanel", style: "width: 33%", layoutKind: enyo.FittableRowsLayout, components:[
 			{kind: "PortsHeader", title: "Lumberjack", taglines: [
 				"Always Watching The Log",
 				"Sleep All Night, Work All Day",
@@ -50,7 +50,7 @@ enyo.kind({
 			this.$.contentPanels.addStyles("box-shadow: 0");
 		}
 		else {
-			this.setArrangerKind("CollapsingArranger");
+			this.setArrangerKind(enyo.CollapsingArranger);
 			this.setDraggable(true);
 			this.$.contentPanels.addStyles("box-shadow: -4px 0px 4px rgba(0,0,0,0.3)");
 		}

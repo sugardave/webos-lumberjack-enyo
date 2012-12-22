@@ -1,7 +1,7 @@
 enyo.kind({
 	name: "ListItem",
 	classes: "list-item",
-	layoutKind: "FittableColumnsLayout",
+	layoutKind: enyo.FittableColumnsLayout,
 	handlers: {
 		onmousedown: "pressed",
 		ondragstart: "released",

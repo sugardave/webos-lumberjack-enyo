@@ -12,13 +12,19 @@ enyo.kind({
 		title: ""
 	},
 	components:[
-		{name: "ItemIcon", kind: "Image", style: "height: 100%"},
-		{name: "ItemTitle", style: "padding-left: 10px;"},
+		{name: "itemIcon", kind: "Image", style: "height: 100%;"},
+		{name: "itemTitle", fit: true, style: "padding-left: 10px;"},
 	],
 	create: function() {
 		this.inherited(arguments);
-		this.$.ItemIcon.setSrc(this.icon);
-		this.$.ItemTitle.setContent(this.title);
+		this.iconChanged();
+		this.titleChanged();
+	},
+	iconChanged: function() {
+		this.$.itemIcon.setSrc(this.icon);
+	},
+	titleChanged: function() {
+		this.$.itemTitle.setContent(this.title);
 	},
 	pressed: function() {
 		this.addClass("onyx-selected");

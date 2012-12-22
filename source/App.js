@@ -3,15 +3,11 @@ enyo.kind({
 	kind: "Panels",
 	realtimeFit: true,
 	arrangerKind: "CollapsingArranger",
+	peekWidth: 50,
 	components:[
 		{kind: "enyo.Signals", onbackbutton: "handleBackGesture"},
-		{name: "MenuPanel",
-		style: "width: 33%",
-		layoutKind: "FittableRowsLayout",
-		components:[
-			{kind: "PortsHeader",
-			title: "Lumberjack",
-			taglines: [
+		{name: "MenuPanel", style: "width: 33%", layoutKind: "FittableRowsLayout", components:[
+			{kind: "PortsHeader", title: "Lumberjack", taglines: [
 				"Always Watching The Log",
 				"Sleep All Night, Work All Day",
 				"Hack Through Your Logs",
@@ -19,43 +15,32 @@ enyo.kind({
 				"<a href='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=R3Q2EUA52WJ7A'>Donated</a> To WebOS Internals Lately?",
 				"Is A Logger... Get it?"
 			]},
-			{kind: "Scroller",
-			horizontal: "hidden",
-			classes: "enyo-fill",
-			fit: true,
-			touch: true,
-			components:[
+			{name: "scroller", kind: enyo.Scroller, horizontal: "hidden", classesX: "enyo-fill", fit: true, touch: true, components:[
 				//Connectivity
 				//{kind: "onyx.Toolbar", classes: "list-header", content: "List Header Template"},
-				{name: "filterItem", kind: "FilterPopup", classes: "main-item"}
-				//{kind: "ListItem", icon: "icon.png", title: "List Item Template", ontap: "openPanel"}
+				{name: "filterItem", kind: "FilterItem", classes: "main-item", ontap: "expand"}
 			]},
-			{kind: onyx.Toolbar},
+			{kind: onyx.Toolbar}
 		]},
-		{name: "ContentPanels",
-		kind: "Panels",
-		arrangerKind: "CardArranger",
-		draggable: false,
-		index: 1,
-		components:[
+		{name: "ContentPanels", kind: "Panels", arrangerKind: "CardArranger", draggable: false,	index: 1, components:[
 			{kind: "EmptyPanel"},
 		]},
 	],
-	createX: function() {
+	indexChanged: function() {
 		this.inherited(arguments);
-		if (!navigator.service) return;
-		var request = navigator.service.Request("palm://com.palm.connectionmanager",
-		{
-			method: 'getstatus',
-			parameters: {},
-			onSuccess: enyo.bind(this, "showVersion"),
-		});
-	},
-	showVersion: function(inResult) {
-		this.log("GOT STATUS");
-		this.log("result="+JSON.stringify(inResult));
+		// close the drawer when expanding the ContentPanels
+		if (this.index === 1) {
+			enyo.job("closeList", enyo.bind(this, function() {
+				this.$.filterItem.close();
+				//TODO: see if this is necessary when more than filterItem exists in scroller, otherwise, the whole list is disappearing
+				this.$.scroller.render();
+			}), 100);
+		}
 	},
 	//Handlers
+	expand: function() {
+		this.setIndex(0);
+	},
 	reflow: function(inSender) {
 		this.inherited(arguments);
 		if(enyo.Panels.isScreenNarrow()) {

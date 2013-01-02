@@ -34,7 +34,7 @@ enyo.kind({
 			enyo.job("closeList", enyo.bind(this, function() {
 				this.$.filterItem.close();
 				//TODO: see if this is necessary when more than filterItem exists in scroller, otherwise, the whole list is disappearing
-				this.$.scroller.render();
+				//this.$.scroller.render();
 			}), 100);
 		}
 	},
@@ -71,7 +71,7 @@ enyo.kind({
 				filter: this.$.filterItem.filter, custom: this.$.filterItem.custom}
 		]}, {owner: this});*/
 		this.$.contentPanels.createComponent(
-			{name: "secondary", peekWidthX: 66, components: [
+			{name: "secondary", components: [
 				{name: "getLog", kind: "GetLog", classes: "log", onClose: "destroySecondary",
 					filter: this.$.filterItem.filter, custom: this.$.filterItem.custom}
 			]},

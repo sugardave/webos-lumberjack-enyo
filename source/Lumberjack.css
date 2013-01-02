@@ -12,20 +12,20 @@
 	background-repeat: no-repeat;
 }
 #app .main-list .icon.filter {
-	background-image: url(../images/icon-filter.png);
+	background-image: url(../assets/icon-filter.png);
 }
 #app .main-list .icon.app {
-	background-image: url(../images/icon-app.png);
+	background-image: url(../assets/icon-app.png);
 }
 #app .main-list .icon.get {
-	background-image: url(../images/icon-get.png);
+	background-image: url(../assets/icon-get.png);
 }
 #app .main-list .icon.tail {
-	background-image: url(../images/icon-tail.png);
+	background-image: url(../assets/icon-tail.png);
 }
 #app .main-list .icon.worm {
-	background-image: url(../images/icon-worm.png);
+	background-image: url(../assets/icon-worm.png);
 }
 #app .main-list .icon.bus {
-	background-image: url(../images/icon-bus.png);
+	background-image: url(../assets/icon-bus.png);
 }

@@ -17,7 +17,7 @@ enyo.kind({
 			{kind: onyx.Grabber},
 			{name: "title", classes: "title", content: "Retrieve Log"},
 			{fit: true},
-			{kind: onyx.Button, content: "X", classes: "onyx-negative", ontap: "close"},
+			{kind: onyx.Button, content: "X", classes: "onyx-negative", ontap: "doClose"},
 		]},
 		{layoutKind: enyo.FittableRowsLayout, fit: true, components: [
 			{name: "spinner", kind: onyx.Spinner},
